@@ -26,6 +26,7 @@ double find_rate(vector<double> rate_vec, vector<string> date_vec, string date)
     for (int i=0; i != date_vec.size(); i++){
         if (date == date_vec[i])
             return rate_vec[i];
+
     }
 }
 
@@ -52,7 +53,6 @@ int main()
 
    infile.close();
 
-
 // code for prompting user for a date and returning the rate
 // and the difference between the rate for that date and the
 // average rate
@@ -60,24 +60,17 @@ int main()
 
     double ave = average(rate);
 
-//    cout << "Please enter a date in format xxxx-xx (year-month): ";
-//    string date_string;
-//    cin >> date_string;
-//
-//    double rate_outcome = find_rate(rate, date, date_string);
-//    cout << "The corresponding rate on the entered date is "
-//    << rate_outcome << endl;
-//
-//    cout << "The difference between the rate on the entered date and average rate is "
-//    << rate_outcome - ave << endl;
-
-    while (cin)
+    while (true)
     {
         cout << "Please enter a date in format xxxx-xx (year-month) or enter ctrl-z to exit: ";
         string date_string;
         cin >> date_string;
 
+        if (cin.eof())
+            break;
+
         double rate_outcome = find_rate(rate, date, date_string);
+        cout << "The average rate is " << ave << endl;
         cout << "The corresponding rate on the entered date is "
         << rate_outcome << endl;
 
